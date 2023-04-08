@@ -30,9 +30,3 @@ resource "aws_route53_record" "records" {
 locals {
   LENGTH                   = length(var.COMPONENTS)
 }
-
-resource "null_resource" "ansible_inventory" {
-  provisioner "local-exec" {
-    command = "terraform-inventory --output=./ansible/inventory.ini"
-  }
-}
