@@ -7,6 +7,7 @@
   ansible.builtin.yum:
     name: mongodb-org
     state: present
+    update_cache: yes
 
 - name: Update IP Address
   ansible.builtin.replace:
