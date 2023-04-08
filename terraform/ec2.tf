@@ -22,7 +22,7 @@ resource "aws_route53_record" "records" {
   count                   = local.LENGTH
   name                    = element(var.COMPONENTS, count.index)
   type                    = "A"
-  zone_id                 = "Z02459993QYCWJEXGK996"
+  zone_id                 = "Z0344920CYRF77G0UQSC"
   ttl                     = "300"
   records                 = [element(aws_spot_instance_request.sample.*.private_ip, count.index)]
 }
