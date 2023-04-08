@@ -1,7 +1,7 @@
 resource "aws_spot_instance_request" "sample" {
   count                   = local.LENGTH
   ami                     = "ami-0bb6af715826253bf"
-  spot_price              = "0.0035"
+  spot_price              = "0.0755"
   instance_type           = "t2.micro"
   wait_for_fulfillment    = true
   vpc_security_group_ids  = [aws_security_group.allow_ssh.id]
