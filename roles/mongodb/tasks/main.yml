@@ -17,7 +17,7 @@
 - name: Start MongoDB
   ansible.builtin.yum:
     name: mongod
-    state: present
+    state: started
 
 - name: Download Schema
   ansible.builtin.unarchive:
