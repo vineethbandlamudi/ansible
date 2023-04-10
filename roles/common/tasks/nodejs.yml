@@ -1,6 +1,6 @@
 - name: Install NodeJS
   ansible.builtin.yum:
-    name: ["nodejs", "make", "gcc-c++"]
+    name: ["nodejs", "make", "gcc-c++", "npm"]
 
 - name: Add Application USER
   ansible.builtin.user:
@@ -22,5 +22,4 @@
   community.general.npm:
     path: /home/roboshop/catalogue/
     state: latest
-    executable: /bin/node
   become_user: roboshop
