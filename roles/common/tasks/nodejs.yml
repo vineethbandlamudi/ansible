@@ -8,7 +8,7 @@
 
 - name: Download Catalogue
   ansible.builtin.include_tasks:
-    file: download
+    file: download.yml
 
 - name: Copy Catalogue Content
   ansible.builtin.copy:
