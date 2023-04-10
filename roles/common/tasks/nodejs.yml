@@ -18,7 +18,7 @@
     owner: roboshop
     group: roboshop
 
-- name: Install NodeJS
+- name: Install Catalogue Dependencies
   community.general.npm:
     path: /home/roboshop/catalogue/
     state: latest
