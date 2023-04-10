@@ -1,2 +1,4 @@
----
-# tasks file for catalogue
+- name: Catalogue Setup
+  include_role:
+    name: nodejs
+    tasks_from: nodejs
