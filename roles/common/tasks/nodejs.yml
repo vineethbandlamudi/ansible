@@ -22,5 +22,5 @@
   community.general.npm:
     path: /home/roboshop/catalogue/
     state: latest
-    executable: /usr/bin/npm
+    executable: /usr/bin/node
   become_user: roboshop
