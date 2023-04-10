@@ -15,7 +15,8 @@
     src: /tmp/catalogue-main/
     dest: /home/roboshop/catalogue/
     remote_src: yes
-  become_user: roboshop
+    owner: roboshop
+    group: roboshop
 
 - name: Install NodeJS
   community.general.npm:
