@@ -7,8 +7,8 @@
     name: roboshop
 
 - name: Download Catalogue
-  include_tasks:
-    name: download
+  ansible.builtin.include_tasks:
+    file: download
 
 - name: Copy Catalogue Content
   ansible.builtin.copy:
