@@ -1,2 +1,4 @@
----
-# tasks file for cart
+- name: Cart Setup
+  include_role:
+    name: common
+    tasks_from: nodejs
