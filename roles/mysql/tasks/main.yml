@@ -1,2 +1,15 @@
----
-# tasks file for mysql
+- name: Setup MySQL Repo
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Install MySQL
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: present
+
+- name: Start MySQL
+  systemd:
+    name: mysqld
+    enabled: yes
+    state: started
