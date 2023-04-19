@@ -9,7 +9,7 @@
     state: present
 
 - name: Update Redis Config
-  ansible.builin.replace:
+  ansible.builtin.replace:
     pat: /etc/redis.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
