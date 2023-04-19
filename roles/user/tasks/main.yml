@@ -1,2 +1,4 @@
----
-# tasks file for user
+- name: User Setup
+  include_role:
+    name: common
+    tasks_from: nodejs

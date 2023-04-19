@@ -6,32 +6,32 @@
   ansible.builtin.user:
     name: roboshop
 
-- name: Download Catalogue
+- name: Download {{ COMPONENT }}
   ansible.builtin.include_tasks:
     file: download.yml
 
-- name: Copy Catalogue Content
+- name: Copy {{ COMPONENT }} Content
   ansible.builtin.copy:
-    src: /tmp/catalogue-main/
-    dest: /home/roboshop/catalogue/
+    src: /tmp/{{ COMPONENT }}-main/
+    dest: /home/roboshop/{{ COMPONENT }}/
     remote_src: yes
     owner: roboshop
     group: roboshop
 
-- name: Install Catalogue Dependencies
+- name: Install {{ COMPONENT }} Dependencies
   community.general.npm:
-    path: /home/roboshop/catalogue/
+    path: /home/roboshop/{{ COMPONENT }}/
     state: latest
   become_user: roboshop
 
 - name: Copy SystemD
   ansible.builtin.copy:
     src: systemd.service
-    dest: /etc/systemd/system/catalogue.service
+    dest: /etc/systemd/system/{{ COMPONENT }}.service
 
-- name: Restart Catalogue Service
+- name: Restart {{ COMPONENT }} Service
   ansible.builtin.systemd:
-    name: catalogue
+    name: "{{ COMPONENT }}"
     state: restarted
     enabled: yes
     daemon_reload: yes
