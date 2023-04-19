@@ -1,2 +1,21 @@
----
-# tasks file for redis
+- name: Configure Redis
+  ansible.builtin.yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+
+- name: Install Redis
+  ansible.builtin.yum:
+    name: redis
+    enablerepo: remi
+    state: present
+
+- name: Update Redis Config
+  ansible.builin.replace:
+    pat: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+    
+- name: start Redis
+  ansible.builtin.systemd:
+    name: redis
+    enabled: yes
+    state: restarted

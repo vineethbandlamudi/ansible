@@ -5,16 +5,23 @@
   roles:
     - name: frontend
 
-- name: RoboShop Frontend setup
+- name: RoboShop MongoDB setup
   hosts: MONGODB
   become: yes
   tags: mongodb
   roles:
     - name: mongodb
 
-- name: RoboShop Frontend setup
+- name: RoboShop Catalogue setup
   hosts: CATALOGUE
   become: yes
   tags: catalogue
   roles:
     - name: catalogue
+
+- name: RoboShop Redis setup
+  hosts: REDIS
+  become: yes
+  tags: redis
+  roles:
+    - name: redis
