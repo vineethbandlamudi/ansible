@@ -13,3 +13,40 @@
     name: mysqld
     enabled: yes
     state: started
+
+- name: Run a Query
+  community.mysql.mysql_query:
+    query: show databases
+    login_user: root
+    login_password: RoboShop@1
+  register: default_mysql_check
+  ignore_errors: yes
+
+- name: Grab Default Password
+  ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log  | awk '{print $NF}'
+  register: default_password
+  when: default_mysql_check.failed
+
+- name: Reset MySQL Password
+  ansible.builtin.shell: ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p{{ default_password.stdout }}
+  when: default_mysql_check.failed
+
+- name: Uninstall Plugin
+  community.mysql.mysql_query:
+    query: uninstall plugin validate_password
+    login_user: root
+    login_password: RoboShop@1
+  ignore_errors: yes
+
+- name: Download Schema
+  include_role:
+    name: common
+    tasks_from: download
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: RoboShop@1
