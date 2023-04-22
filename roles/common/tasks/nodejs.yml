@@ -3,21 +3,9 @@
     name: ["nodejs", "make", "gcc-c++", "npm"]
     state: present
 
-- name: Add Application USER
-  ansible.builtin.user:
-    name: roboshop
-
 - name: Download {{ COMPONENT }} Content
   ansible.builtin.include_tasks:
     file: download
-
-- name: Copy {{ COMPONENT }} Content
-  ansible.builtin.copy:
-    src: /tmp/{{ COMPONENT }}-main/
-    dest: /home/roboshop/{{ COMPONENT }}/
-    remote_src: yes
-    owner: roboshop
-    group: roboshop
 
 - name: Install {{ COMPONENT }} Dependencies
   community.general.npm:
@@ -25,14 +13,6 @@
     state: latest
   become_user: roboshop
 
-- name: Copy SystemD
-  ansible.builtin.copy:
-    src: systemd.service
-    dest: /etc/systemd/system/{{ COMPONENT }}.service
-
-- name: Restart {{ COMPONENT }} Service
-  ansible.builtin.systemd:
-    name: "{{ COMPONENT }}"
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
+- name: Setup systemD
+  ansible.builtin.include_tasks:
+    file: setup-systemd

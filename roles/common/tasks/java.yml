@@ -3,10 +3,15 @@
     name: maven
     state: present
 
-- name: Add Application USER
-  ansible.builtin.user:
-    name: roboshop
-
 - name: Download {{ COMPONENT }}
   ansible.builtin.include_tasks:
     file: download
+
+- name: Compile Package
+  ansible.builtin.shell: mvn clean package &&  mv target/shipping-1.0.jar shipping.jar
+  args:
+   chdir: /home/roboshop/{{ COMPONENT }}
+
+- name: Setup systemD
+  ansible.builtin.include_tasks:
+    file: setup-systemd
