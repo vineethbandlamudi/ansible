@@ -1,6 +1,6 @@
 - name: Install Dependency Packages
   ansible.builtin.yum:
-    name: [ "python36" "gcc" "python3-devel" ]
+    name: [ "python36", "gcc", "python3-devel" ]
     state: present
 
 - name: Add user and Download Content
