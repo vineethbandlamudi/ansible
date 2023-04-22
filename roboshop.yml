@@ -54,9 +54,16 @@
   roles:
     - name: shipping
 
-- name: RoboShop RabbitMQ
+- name: RoboShop RabbitMQ setup
   hosts: RABBITMQ
   become: yes
   tags: rabbitmq
   roles:
     - name: rabbitmq
+
+- name: RoboShop Payment setup
+  hosts: PAYMENT
+  become: yes
+  tags: payment
+  roles:
+    - name: payment

@@ -1,2 +1,4 @@
----
-# tasks file for payment
+- name: Payment
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: python3
