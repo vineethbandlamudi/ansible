@@ -1,6 +1,7 @@
 - name: Install NodeJS
   ansible.builtin.yum:
     name: ["nodejs", "make", "gcc-c++", "npm"]
+    state: present
 
 - name: Add Application USER
   ansible.builtin.user:
@@ -8,7 +9,7 @@
 
 - name: Download {{ COMPONENT }} Content
   ansible.builtin.include_tasks:
-    file: download.yml
+    file: download
 
 - name: Copy {{ COMPONENT }} Content
   ansible.builtin.copy:

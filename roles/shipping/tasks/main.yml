@@ -1,2 +1,4 @@
----
-# tasks file for shipping
+- name: Setup Shipping
+  include_role:
+    name: common
+    tasks_from: java

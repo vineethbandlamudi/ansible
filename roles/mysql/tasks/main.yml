@@ -28,7 +28,7 @@
   when: default_mysql_check.failed
 
 - name: Reset MySQL Password
-  ansible.builtin.shell: ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p{{ default_password.stdout }}
+  ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -uroot -p{{ default_password.stdout }}
   when: default_mysql_check.failed
 
 - name: Uninstall Plugin

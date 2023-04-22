@@ -1,0 +1,14 @@
+- name: Install Maven
+  ansible.builtin.yum:
+    name: maven
+    state: present
+
+- name: Add Application USER
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Download {{ COMPONENT }}
+  ansible.builtin.include_tasks:
+    file: download
+
+- name:
