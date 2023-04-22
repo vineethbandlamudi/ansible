@@ -5,7 +5,7 @@
 
 - name: Download {{ COMPONENT }}
   ansible.builtin.include_tasks:
-    file: download
+    file: download.yml
 
 - name: Compile Package
   ansible.builtin.shell: mvn clean package &&  mv target/shipping-1.0.jar shipping.jar
@@ -14,4 +14,4 @@
 
 - name: Setup systemD
   ansible.builtin.include_tasks:
-    file: setup-systemd
+    file: setup-systemd.yml
