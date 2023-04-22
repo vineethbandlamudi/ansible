@@ -10,5 +10,3 @@
 - name: Download {{ COMPONENT }}
   ansible.builtin.include_tasks:
     file: download
-
-- name:

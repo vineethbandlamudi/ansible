@@ -1,6 +1,6 @@
 resource "aws_spot_instance_request" "sample" {
   count                   = local.LENGTH
-  ami                     = "ami-0bb6af715826253bf"
+  ami                     = "ami-0089b8e98cd95257d"
   spot_price              = "0.0755"
   instance_type           = "t2.micro"
   wait_for_fulfillment    = true
