@@ -5,7 +5,7 @@
 
 - name: Install MySQL
   ansible.builtin.yum:
-    name: ["mysql-community-server", "MySQL-python"]
+    name: ["mysql-community-server"]
     state: present
 
 - name: Start MySQL
