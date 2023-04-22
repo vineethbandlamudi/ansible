@@ -12,10 +12,10 @@
 - name: Start Service
   ansible.builtin.systemd:
     name: rabbitmq-server
-    state: present
+    state: restarted
     enabled: yes
 
-- name: |-
+- name: Add Application user
   community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: roboshop123
