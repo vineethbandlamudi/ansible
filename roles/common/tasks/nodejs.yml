@@ -5,7 +5,7 @@
 
 - name: Download {{ COMPONENT }} Content
   ansible.builtin.include_tasks:
-    file: download
+    file: download.yml
 
 - name: Install {{ COMPONENT }} Dependencies
   community.general.npm:

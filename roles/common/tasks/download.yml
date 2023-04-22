@@ -1,6 +1,7 @@
 - name: Add Application USER
   ansible.builtin.user:
     name: roboshop
+    state: present
 
 - name: Download
   ansible.builtin.include_tasks:
@@ -10,6 +11,7 @@
   ansible.builtin.file:
     path: /home/roboshop/{{ COMPONENT }}
     state: absent
+  ignore_errors: yes
 
 - name: Copy {{ COMPONENT }} Content
   ansible.builtin.copy:
